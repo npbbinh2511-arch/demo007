@@ -1,13 +1,3 @@
-MSSV: **25127020**  
-Họ và tên: *Nguyễn Phi Bảo Bình*
-
-## Huong dan bien dich
-
-```Bash
-g++ ./main.cpp -o ./out/app
-```
-
-## Huong dan chay
 ## Thông tin cá nhân
 MSSV: **25127020**
 Tên: **Nguyễn Phi Bảo Bình**
