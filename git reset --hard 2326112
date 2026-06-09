@@ -1,0 +1,19 @@
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD@{1}
+[33m2326112[m HEAD@{1}: reset: moving to HEAD@{1}
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{2}: reset: moving to HEAD~1
+[33m2326112[m HEAD@{3}: commit: Final updated
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{4}: reset: moving to HEAD~1
+[33m6676d7c[m HEAD@{5}: reset: moving to HEAD~1
+[33m9beaeef[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{6}: commit: Final update
+[33m6676d7c[m HEAD@{7}: commit: Update khong co PAT
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{8}: reset: moving to HEAD~2
+[33m7317a89[m HEAD@{9}: commit: Update no pat
+[33m3c86617[m HEAD@{10}: reset: moving to HEAD~1
+[33mdec2e42[m HEAD@{11}: commit: Update
+[33m3c86617[m HEAD@{12}: commit: upadte
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{13}: reset: moving to HEAD~1
+[33m259fb19[m HEAD@{14}: checkout: moving from dev to main
+[33m893dae7[m[33m ([m[1;32mdev[m[33m)[m HEAD@{15}: commit: New update
+[33m259fb19[m HEAD@{16}: checkout: moving from main to dev
+[33m259fb19[m HEAD@{17}: commit: Initial setup
+[33m28aee1d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{18}: commit (initial): Initial setup
