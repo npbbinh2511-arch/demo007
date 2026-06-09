@@ -201,3 +201,10 @@ g++ ./*.cpp ./Utils/*.cpp ../DateInput/Date.cpp-o main
 ./main
 ```
 
+ChatBox AI:
+```Bash
+https://gemini.google.com/share/d/1wGtyvBs46CWZGRb5coerUTdbYN5xwBdG?usp=sharing
+```
+```Bash
+https://gemini.google.com/share/d/1QZ1HSFPsIAJIQGQJhOlC1EHZe6BBuFQm?usp=sharing
+```
