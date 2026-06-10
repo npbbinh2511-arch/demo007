@@ -189,12 +189,12 @@ g++ ./*.cpp ./Utils/*.cpp -o main
 
 **Student**
 ```Bash
-g++ ./*.cpp ./Utils/*.cpp ../DateInput/Date.cpp-o main
+g++ ./*.cpp ./Utils/*.cpp ../DateInput/Date.cpp -o main
 ```
 
 **Product**
 ```Bash
-g++ ./*.cpp ./Utils/*.cpp ../DateInput/Date.cpp-o main
+g++ ./*.cpp ./Utils/*.cpp ../DateInput/Date.cpp -o main
 ```
 ## Hướng Dẫn Chạy
 ```Bash

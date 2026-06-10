@@ -14,7 +14,7 @@ std::istream& operator>>(std::istream& in, Student& student) {
     if (in >> dob) {
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         
-        if (Student::isValidStudent(id, name, dob)) {
+        if (Student::isValidStudent(id, name, email, dob)) {
             student.m_id = id;
             student.m_fullname = name;
             student.m_address = addr;

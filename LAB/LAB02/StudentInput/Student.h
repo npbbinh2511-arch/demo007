@@ -24,17 +24,34 @@ public:
         return static_cast<int>(ymd.year());
     }
 
+    static bool isValidEmailFormat(const std::string& email) noexcept {
+        if (email.empty()) return true; // Chấp nhận để trống theo yêu cầu
+
+        size_t atPos = email.find('@');
+        if (atPos == std::string::npos || atPos == 0 || atPos == email.length() - 1) {
+            return false; 
+        }
+
+        size_t dotPos = email.find('.', atPos + 1);
+        if (dotPos == std::string::npos || dotPos == atPos + 1 || dotPos == email.length() - 1) {
+            return false; 
+        }
+
+        return true;
+    }
+
     // Kiểm tra điều kiện tiên quyết (Preconditions) của Sinh viên
     static bool isValidDOB(const Date& dob) noexcept {
         // Tối ưu tài nguyên: Chỉ kiểm tra logic lịch và năm hiện tại, tuyệt đối không copy chuỗi
         if (!Date::isValidDate(dob.getDay(), dob.getMonth(), dob.getYear())) return false;
-        if (dob.getYear() > getCurrentYear()) return false;
+        if (dob.getYear() > getCurrentYear() - 5) return false;
         return true;
     }
 
-    static bool isValidStudent(const std::string& id, const std::string& name, const Date& dob) noexcept {
+    static bool isValidStudent(const std::string& id, const std::string& name, const std::string& email, const Date& dob) noexcept {
         if (id.empty() || name.empty()) return false;
         // Ngày sinh phải là ngày hợp lệ trên lịch và năm sinh không vượt quá năm hiện tại
+        if (!isValidEmailFormat(email)) return false;
         if (!isValidDOB(dob)) return false;
         return true;
     }

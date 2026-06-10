@@ -21,22 +21,28 @@ void ClearInputBuffer() noexcept {
 }
 
 void HandleStudentInputError(Student& student) {
+    std::cin.clear();
+
     std::cout << "\n[CẢNH BÁO]: Thông tin sinh viên hoặc ngày sinh không hợp lệ!\n";
     std::cout << "(Lưu ý: Năm sinh không được vượt quá năm hiện tại: " << Student::getCurrentYear() << ")\n";
 
     // Ép buộc nhập lại toàn bộ thông tin hợp lệ ngay từ đầu để làm gốc
     while (true) {
-        std::cout << "\n Xác thực làm mới thông tin (Y/N): \n";
+        std::cout << "\nXác thực làm mới thông tin (Y/N): ";
         std::string str;
-        ClearInputBuffer();
         std::getline(std::cin, str);
-        if (str != "y" && str != "Y") {return;}
+        
+        // Logic chuẩn xác (dùng &&): Nếu nhập khác cả 'y' và 'Y' thì thoát hẳn hàm
+        if (str != "y" && str != "Y") { 
+            return; 
+        }
+        
         std::cout << "\n--- BẮT BUỘC LÀM MỚI TOÀN BỘ THÔNG TIN ---\n";
         Student tempStudent;
         if (std::cin >> tempStudent) {
             student = tempStudent;
             std::cout << "=> Khởi tạo thông tin sinh viên thành công.\n";
-            break;
+            break; // Đã có dữ liệu gốc sạch, bẻ gãy vòng lặp để xuống Menu chỉnh sửa
         } else {
             ClearInputBuffer();
             std::cout << "[Lỗi]: Dữ liệu sai logic lịch pháp hoặc vượt quá năm hiện tại. Nhập lại!\n";
@@ -46,24 +52,24 @@ void HandleStudentInputError(Student& student) {
     // Menu quản lý chỉnh sửa từng thành phần sau khi đã có dữ liệu gốc sạch
     while (true) {
         std::cout << "--------------------------------------------------------\n";
-        std::cout << "MENU SUA DOI THONG TIN (CAP NHAT):\n";
-        std::cout << "1. Sua MSSV\n";
-        std::cout << "2. Sua Ho va ten\n";
-        std::cout << "3. Sua Dia chi\n";
-        std::cout << "4. Sua Email\n";
-        std::cout << "5. Sua Ngay sinh (DOB)\n";
-        std::cout << "6. Thoat va luu ket qua\n";
+        std::cout << "MENU SỬA ĐỔI THÔNG TIN (CẬP NHẬT):\n";
+        std::cout << "1. Sửa MSSV\n";
+        std::cout << "2. Sửa Họ và tên\n";
+        std::cout << "3. Sửa Địa chỉ\n";
+        std::cout << "4. Sửa Email\n";
+        std::cout << "5. Sửa Ngày sinh (DOB)\n";
+        std::cout << "6. Thoát và lưu kết quả\n";
         std::cout << student; // In thong tin hien tai
-        std::cout << "Lua chon cua ban (1-6): ";
+        std::cout << "Lựa chọn của bạn (1-6): ";
 
         int choice{0};
         if (!(std::cin >> choice)) {
             ClearInputBuffer();
-            std::cout << "Lua chon khong hop le! Vui long chon tu 1 den 6.\n";
+            std::cout << "Lựa chọn không hợp lệ! Vui lòng chọn từ 1 den 6.\n";
             continue;
         }
         
-        // Don sach ky tu '\n' sau khi nhap so choice de cac lenh getline ben duoi khong bi troi
+        // Dọn sạch ký tự '\n' sau khi nhập số choice để các lệnh getline bên dưới không bị trôi
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (choice == 1) {
@@ -80,14 +86,13 @@ void HandleStudentInputError(Student& student) {
         }
         else if (choice == 2) {
             std::string newName;
-            // Dùng vòng lặp khóa tại chỗ để xử lý khi nhập sai
             while (true) {
                 std::cout << "Nhap Ho va ten moi (Khong duoc de trong): ";
                 std::getline(std::cin, newName);
                 if (!newName.empty()) {
                     student.setFullname(newName);
                     std::cout << "=> Da cap nhat Ho ten.\n";
-                    break; // Nhập đúng thì bẻ gãy vòng lặp để quay lai menu chính
+                    break; 
                 }
                 std::cout << "[Loi]: Ho ten bi trong! Vui long nhap lai.\n";
             }
@@ -123,8 +128,7 @@ void HandleStudentInputError(Student& student) {
                 if (std::cin >> d >> m >> y) {
                     Date tempDob(d, m, y);
                     
-                    // TOI UU TAI NGUYEN: Goi truc tiep ham static kiem tra DOB,
-                    // khong lam dung ham isValidStudent de tranh copy chuoi vo ich.
+                    // TOI UU TAI NGUYEN: Goi truc tiep ham static kiem tra DOB
                     if (Student::isValidDOB(tempDob)) {
                         student.setDOB(tempDob);
                         std::cout << "=> Da cap nhat Ngay sinh.\n";
@@ -140,7 +144,7 @@ void HandleStudentInputError(Student& student) {
         }
         else if (choice == 6) {
             std::cout << "\n=> Luu du lieu thanh cong.\n";
-            break; // Thoat khoi menu cap nhat, quay ve luong main
+            break; 
         }
         else {
             std::cout << "Lua chon ngoai pham vi (1-6)! Vui long chon lai.\n";
